@@ -1,16 +1,50 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Poems Callback</title>
+  <meta charset="UTF-8" />
+  <title>Poems Callback Test</title>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 14px 24px;
+      background-color: #007aff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+
+    button:active {
+      opacity: 0.8;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>🎉 Mở tài khoản thành công</h1>
+  <h2>🎉 Mở tài khoản thành công</h2>
+  <p>Nhấn nút để trả callback về Mobile</p>
+
+  <button onclick="sendCallback()">
+    Trả callback về App
+  </button>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const accountId = params.get("accountId");
-    document.write("<p>Account ID: " + accountId + "</p>");
+    function sendCallback() {
+      // Universal Link của app
+      const callbackUrl =
+        "https://yourdomain.com/account-opened" +
+        "?status=success" +
+        "&accountId=123456";
+
+      // Redirect
+      window.location.href = callbackUrl;
+    }
   </script>
 </body>
 </html>
